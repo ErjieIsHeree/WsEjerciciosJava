@@ -40,10 +40,6 @@ public class Muniemon {
 		return nombre;
 	}
 
-	/**
-	 * Asigna un nombre al Muniemon, si el muniemon
-	 * @param nombre
-	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -80,80 +76,23 @@ public class Muniemon {
 		this.tipo = tipo;
 	}
 	
-	
-	//Menú muniemon
-	public void menuMuniemon() {
-		
-		Interfaz.openingFuncion("Bienvenido al menu");
-		
-		int seleccion = 0;
-		do {
-			System.out.println("Seleccione lo que desea hacer");
-			System.out.println("1.Dar de alta Muniemon");
-			System.out.println("2.Mostrar Muniemon");
-			System.out.println("3.Salir del programa");
-			seleccion = sc.nextInt();
-			if (seleccion == 1) {
-				creacionMuniemon();
-			} else if (seleccion == 2) {
-				mostrarMuniemon();
-			} else if (seleccion != 3) {
-				System.err.println("No existe esta opción, por favor seleccione"
-						+ " 1, 2 o 3");
-			}
-		} while (seleccion != 3);
-
-		Interfaz.endingFuncion("l programa");
-		
-	}
-	
-	//Crea un muniemon (para usuario)
-	public Muniemon creacionMuniemon() {
-		
-		Muniemon muniemon = 
-		
-		Interfaz.openingFuncion("Crea tu muniemon");
-		
-		System.out.println("Reglas para la creación:");
-		System.out.println();
-		System.out.println("1.El nombre no podrá contener carácteres raros");
-		System.out.println();
-		System.out.println("2.Tendrás un total de 99 puntos para añadir"
-				+ "en cualquiera de las estadísticas que deseas, por lo que"
-				+ "calcula bien donde quieres aplicarlos");
-		System.out.println();
-		System.out.println("3.Los muniemons pueden tener hasta 2 elementos como"
-				+ "máximo");
-		System.out.println();
-		System.out.println("4.DIVIÉRTETE");
-		System.out.println();
-		System.out.println("Presiona enter para continuar");
-		sc.nextLine();
-		asignacionNombreMuniemon();
-		asignacionStatsMuniemon();
-		asignacionElementosMuniemon();
-		
-		Interfaz.endingFuncion(" la creación de tu muniemon");
-		
-	}
-	
 	//Asigna nombre al muniemon
 	public void asignacionNombreMuniemon() {
 		
-		Interfaz.openingFuncion("Nombre");
+		Interfaz.openingFuncion("Asignación de nombre");
 		
 		System.out.println("¿Qué nombre deseas darle a tu muniemon?");
 		System.out.println();
 		this.nombre = sc.nextLine();
 		
-		Interfaz.endingFuncion(" la asignación de nombre");
+		Interfaz.endingFuncion(" la asignación");
 		
 	}
 	
 	//Asigna estadísticas al muniemon
 	public void asignacionStatsMuniemon() {
 		
-		Interfaz.openingFuncion("Asigna Stats");
+		Interfaz.openingFuncion("Asignación de Stats");
 		
 		int statsRestantes = 99;
 		int apliStats = 0;
@@ -178,7 +117,8 @@ public class Muniemon {
 		
 		//Asignación de ataque
 		do {
-			System.out.println("¿Cuántos puntos deseas aplicar en ataque?");
+			System.out.println("¿Cuántos puntos deseas aplicar en ataque?"
+					+ "(Si no te quedan puntos por aplicar pon 0)");
 			System.out.println();
 			apliStats = sc.nextInt();
 			System.out.println();
@@ -195,7 +135,8 @@ public class Muniemon {
 		
 		//Asignación de defensa
 		do {
-			System.out.println("¿Cuántos puntos deseas aplicar en defensa?");
+			System.out.println("¿Cuántos puntos deseas aplicar en defensa?"
+					+ "(Si no te quedan puntos para aplicar pon 0)");
 			System.out.println();
 			apliStats = sc.nextInt();
 			System.out.println();
@@ -210,7 +151,7 @@ public class Muniemon {
 			}
 		} while (!aplicadoCorrectamente);
 		
-		Interfaz.endingFuncion(" la asignación de estadísticas");
+		Interfaz.endingFuncion(" la asignación");
 		
 	}
 	
@@ -232,26 +173,31 @@ public class Muniemon {
 		statsRestantes -= (this.defensa - 1);
 		System.out.println("Stats restantes: " + statsRestantes);
 		
-		Interfaz.endingFuncion(" los stats");
+		Interfaz.endingFuncion(" lla muestra de stats");
 		
 	}
 	
 	//Asigna elementos al muniemon
 	public void asignacionElementosMuniemon() {
-		//Asignación de elementos
-		System.out.println("¿Cuántos elementos controla tu muniemon?");
 		
-		//Control cantidad de elementos
+		Interfaz.openingFuncion("Asignación de elementos");
+		
+		//Asignación de elementos------------------------------------------
+		System.out.println("¿Cuántos elementos controla tu muniemon?"
+				+ "(Solo puede controlar 1 o 2 elementos)");
+		
+		//Control cantidad de elementos------------------------------------
 		int cantidadElementos = 0;
 		do {
 			cantidadElementos = sc.nextInt();
 			if (cantidadElementos < 0 || cantidadElementos > 3) {
-				System.err.println("El muniemon debe tener 1 o 2 elementos");
+				System.out.println();
+				System.out.println("El muniemon debe tener 1 o 2 elementos");
 				System.out.println("Introduce cuántos elementos debe tener");
 			}
 		} while (cantidadElementos < 0 || cantidadElementos > 3);
 		
-		//Un solo elemento
+		//Un solo elemento-------------------------------------------------
 		if (cantidadElementos == 1) {
 			System.out.println("Introduce el número del elemento que controla");
 			for (int i = 0; i < TipoElemento.values().length; i++) {
@@ -260,6 +206,9 @@ public class Muniemon {
 			int seleElem = sc.nextInt();
 			this.tipo.add(TipoElemento.values()[seleElem - 1]);
 		} else {
+		
+		//Dos elementos----------------------------------------------------
+			//Primer elemento
 			System.out.println("Introduce el número del primer elemento que"
 					+ "controla");
 			for (int i = 0; i < TipoElemento.values().length; i++) {
@@ -268,20 +217,24 @@ public class Muniemon {
 			int seleElem = sc.nextInt();
 			this.tipo.add(TipoElemento.values()[seleElem - 1]);
 			int seleElem2 = 0;
+			//Segundo elemento
 			do {
 				System.out.println("Introduce el número del segundo elemento"
 					+ "que controla");
-			for (int i = 0; i < TipoElemento.values().length; i++) {
-				System.out.println(i + "-" + TipoElemento.values()[i]);
-			}
-			seleElem2 = sc.nextInt();
-			this.tipo.add(1, TipoElemento.values()[seleElem - 1]);
-			if (seleElem == seleElem2) {
-				System.out.println("Los elementos no pueden ser iguales, "
-					+ "por favor selecciona otro");
-			}
+				for (int i = 0; i < TipoElemento.values().length; i++) {
+					System.out.println(i + "-" + TipoElemento.values()[i]);
+				}
+				seleElem2 = sc.nextInt();
+				this.tipo.add(1, TipoElemento.values()[seleElem - 1]);
+				if (seleElem == seleElem2) {
+					System.out.println("Los elementos no pueden ser iguales, "
+							+ "por favor selecciona otro");
+				}
 			} while (seleElem == seleElem2);
 		}
+		
+		Interfaz.endingFuncion(" la asignación");
+		
 	}
 	
 	

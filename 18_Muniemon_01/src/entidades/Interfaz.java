@@ -8,6 +8,7 @@ public class Interfaz {
 		if (title.length() % 2 != 0) {
 			cantidadEspacios--;
 		}
+		System.out.println();
 		System.out.println("--------------------------------"); //16
 		if (cantidadEspacios < 0) {
 			for (int i = 0; i < cantidadEspacios; i++) {
