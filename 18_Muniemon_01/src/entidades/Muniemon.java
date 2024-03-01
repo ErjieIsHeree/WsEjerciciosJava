@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import entidades.Interfaz;
-
 import enumeradores.TipoElemento;
 
 public class Muniemon {
@@ -12,10 +11,10 @@ public class Muniemon {
 	Scanner sc = new Scanner(System.in);
 	
 	private String nombre;
-	private int vida;
-	private int ataque;
-	private int defensa;
-	private ArrayList<TipoElemento> tipo;
+	private int vida = 1;
+	private int ataque = 1;
+	private int defensa = 1;
+	private ArrayList<TipoElemento> listaTipoElemento;
 	
 	public Muniemon() {
 		super();
@@ -27,13 +26,13 @@ public class Muniemon {
 		this.vida = vida;
 		this.ataque = ataque;
 		this.defensa = defensa;
-		this.tipo = tipo;
+		this.listaTipoElemento = tipo;
 	}
 
 	@Override
 	public String toString() {
 		return "Muniemon [nombre=" + nombre + ", vida=" + vida + ", ataque=" + ataque + ", defensa=" + defensa
-				+ ", tipo=" + tipo + "]";
+				+ ", tipo=" + listaTipoElemento + "]";
 	}
 
 	public String getNombre() {
@@ -69,11 +68,11 @@ public class Muniemon {
 	}
 
 	public ArrayList<TipoElemento> getTipo() {
-		return tipo;
+		return listaTipoElemento;
 	}
 
 	public void setTipo(ArrayList<TipoElemento> tipo) {
-		this.tipo = tipo;
+		this.listaTipoElemento = tipo;
 	}
 	
 	//Asigna nombre al muniemon
@@ -100,7 +99,9 @@ public class Muniemon {
 		
 		//Asignación de vida
 		do {
+			System.out.println();
 			System.out.println("¿Cuántos puntos deseas aplicar en vida?");
+			System.out.println("(Pon 0 si no te quedan puntos que añadir)");
 			System.out.println();
 			apliStats = sc.nextInt();
 			System.out.println();
@@ -110,15 +111,17 @@ public class Muniemon {
 				aplicadoCorrectamente = true;
 			} else {
 				System.out.println("Error, no se puede introducir esta cantidad"
-						+ "de puntos");
+						+ " de puntos");
 				mostrarStats();
 			}
 		} while (!aplicadoCorrectamente);
 		
 		//Asignación de ataque
+		aplicadoCorrectamente = false;
 		do {
-			System.out.println("¿Cuántos puntos deseas aplicar en ataque?"
-					+ "(Si no te quedan puntos por aplicar pon 0)");
+			System.out.println();
+			System.out.println("¿Cuántos puntos deseas aplicar en ataque?");
+			System.out.println("(Pon 0 si no te quedan puntos que añadir)");
 			System.out.println();
 			apliStats = sc.nextInt();
 			System.out.println();
@@ -128,15 +131,17 @@ public class Muniemon {
 				aplicadoCorrectamente = true;
 			} else {
 				System.out.println("Error, no se puede introducir esta cantidad"
-						+ "de puntos");
+						+ " de puntos");
 				mostrarStats();
 			}
 		} while (!aplicadoCorrectamente);
 		
 		//Asignación de defensa
+		aplicadoCorrectamente = false;
 		do {
-			System.out.println("¿Cuántos puntos deseas aplicar en defensa?"
-					+ "(Si no te quedan puntos para aplicar pon 0)");
+			System.out.println();
+			System.out.println("¿Cuántos puntos deseas aplicar en defensa?");
+			System.out.println("(Pon 0 si no te quedan puntos que añadir)");
 			System.out.println();
 			apliStats = sc.nextInt();
 			System.out.println();
@@ -146,7 +151,7 @@ public class Muniemon {
 				aplicadoCorrectamente = true;
 			} else {
 				System.out.println("Error, no se puede introducir esta cantidad"
-						+ "de puntos");
+						+ " de puntos");
 				mostrarStats();
 			}
 		} while (!aplicadoCorrectamente);
@@ -173,59 +178,64 @@ public class Muniemon {
 		statsRestantes -= (this.defensa - 1);
 		System.out.println("Stats restantes: " + statsRestantes);
 		
-		Interfaz.endingFuncion(" lla muestra de stats");
+		Interfaz.endingFuncion(" la muestra de stats");
 		
 	}
 	
 	//Asigna elementos al muniemon
 	public void asignacionElementosMuniemon() {
 		
+		ArrayList<TipoElemento> listaTipoElemento = new ArrayList<TipoElemento>();
+		
 		Interfaz.openingFuncion("Asignación de elementos");
 		
 		//Asignación de elementos------------------------------------------
 		System.out.println("¿Cuántos elementos controla tu muniemon?"
-				+ "(Solo puede controlar 1 o 2 elementos)");
-		
+				+ " (Solo puede controlar 1 o 2 elementos)");
+		System.out.println();
 		//Control cantidad de elementos------------------------------------
 		int cantidadElementos = 0;
 		do {
 			cantidadElementos = sc.nextInt();
 			if (cantidadElementos < 0 || cantidadElementos > 3) {
-				System.out.println();
 				System.out.println("El muniemon debe tener 1 o 2 elementos");
 				System.out.println("Introduce cuántos elementos debe tener");
 			}
 		} while (cantidadElementos < 0 || cantidadElementos > 3);
-		
+		System.out.println();
+		System.out.println();
 		//Un solo elemento-------------------------------------------------
+		System.out.println();
 		if (cantidadElementos == 1) {
 			System.out.println("Introduce el número del elemento que controla");
 			for (int i = 0; i < TipoElemento.values().length; i++) {
-				System.out.println(i + "-" + TipoElemento.values()[i]);
+				System.out.println(( i + 1 ) + "-" + TipoElemento.values()[i]);
 			}
 			int seleElem = sc.nextInt();
-			this.tipo.add(TipoElemento.values()[seleElem - 1]);
+			listaTipoElemento.add(TipoElemento.values()[seleElem-1]);
 		} else {
 		
 		//Dos elementos----------------------------------------------------
 			//Primer elemento
+			System.out.println();
 			System.out.println("Introduce el número del primer elemento que"
 					+ "controla");
 			for (int i = 0; i < TipoElemento.values().length; i++) {
-					System.out.println(i + "-" + TipoElemento.values()[i]);
+					System.out.println(( i + 1 ) + "-" + TipoElemento.values()[i]);
 			}
 			int seleElem = sc.nextInt();
-			this.tipo.add(TipoElemento.values()[seleElem - 1]);
+			listaTipoElemento.add(TipoElemento.values()[seleElem - 1]);
 			int seleElem2 = 0;
 			//Segundo elemento
 			do {
+				System.out.println();
 				System.out.println("Introduce el número del segundo elemento"
 					+ "que controla");
 				for (int i = 0; i < TipoElemento.values().length; i++) {
-					System.out.println(i + "-" + TipoElemento.values()[i]);
+					System.out.println(( i + 1 ) + "-" + TipoElemento.values()[i]);
 				}
 				seleElem2 = sc.nextInt();
-				this.tipo.add(1, TipoElemento.values()[seleElem - 1]);
+				listaTipoElemento.add(1, TipoElemento.values()[seleElem2 - 1]);
 				if (seleElem == seleElem2) {
 					System.out.println("Los elementos no pueden ser iguales, "
 							+ "por favor selecciona otro");
@@ -235,11 +245,8 @@ public class Muniemon {
 		
 		Interfaz.endingFuncion(" la asignación");
 		
+		this.listaTipoElemento = listaTipoElemento;
+		
 	}
-	
-	
-	
-	// Funciones para interfaz de las funciones previas
-	
 	
 }
