@@ -3,7 +3,7 @@ package entiedades;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class main {
+public class mainEmpleados {
 	
 	public static void main(String[] args) {
 		
@@ -19,7 +19,7 @@ public class main {
 			System.out.println("4.Coste de la empresa(Salario de todos)");
 			System.out.println("5.Salir del programa");
 			eleccion = sc.nextInt();
-			
+
 			if (eleccion == 1) {
 				System.out.println("¿Que tipo de empleado desea dar de alta?");
 				System.out.println("1.Programador");
@@ -28,13 +28,13 @@ public class main {
 				int tipoEleccion = sc.nextInt();
 				switch (tipoEleccion) {
 				case 1:
-					
+					listaEmpleados.add(darDeAltaProgramador(sc));
 					break;
 				case 2:
-					
+					listaEmpleados.add(darDeAltaJefeProy(sc));
 					break;
 				case 3:
-				
+					listaEmpleados.add(darDeAltaDirector(sc));
 					break;
 				default:
 					System.out.println("Esta opcion no existe");
@@ -94,6 +94,7 @@ public class main {
 		System.out.println("Sueldo Base:");
 		jefeProy.setSueldoBase(sc.nextDouble());
 		System.out.println("Incentivo:");
+		jefeProy.setIncentivo(sc.nextDouble());
 		
 		return jefeProy;
 	}
@@ -117,17 +118,27 @@ public class main {
 		System.out.println("Sueldo Base:");
 		director.setSueldoBase(sc.nextDouble());
 		
+		
 		return director;
 	}
 	
 	/**
 	 * El metodo mostrarEmpleados(ArrayList<Empleado/> listaEmpleados, Scanner sc)
-	 * mostrara en orden y listado del 1 a n, todos los objetos empleado
-	 * contenido en el ArrayList pasado por parametro. A continuacion, pedira
-	 * por consola un numero del 1 a n, y a continución mostrara el salario del
-	 * empleado cuya posicion en el array sea el numero pasado por parametro
-	 * @param <b></b>
-	 * @return
+	 * muestra todos los empleados con sus atributos contenidos en el Array
+	 * creado mediante la clase ArrayList contenido por objetos creados mediante
+	 * la clase Empleado y sus herederos.
+	 */
+	
+	/**
+	 * El metodo mostrarSalario(ArrayList<Empleado/> listaEmpleados, int empl)
+	 * muestra el salario del empleado cuya posicion en el array list pasado por
+	 * parametro sea la misma que el valor del valor entero pasado por parametro
+	 * @param <b>listaEmpleados</b> un objeto creado mediante la clase ArrayList
+	 * de la biblioteca de java (java.util.ArrayList) que contiene objetos
+	 * creados mediante la clase Empleado y sus herederos. <b>empl</b> valor
+	 * entero que determinara la posicion de array list del que se 
+	 * (java.util.Scanner).
+	 * @return 
 	 */
 
 	/**
@@ -138,8 +149,9 @@ public class main {
 	 * 
 	 * Este metodo esta asociado al metodo devolverSalarioTot() de la clase
 	 * empleado, por lo que si el array tiene algun valor distinto del objeto
-	 * creado mediante la clase Empleado con su metodo devolverSalarioTot(),
-	 * (metodo que devuelve un valor "double"), 
+	 * creado mediante la clase Empleado o sus herederos, con su metodo 
+	 * devolverSalarioTot(), (metodo que devuelve un valor "double"), podria
+	 * no funcionar correctamente.
 	 * 
 	 * @param <b>listaEmpleados</b> es un objeto creado mediante la clase
 	 * ArrayList.
