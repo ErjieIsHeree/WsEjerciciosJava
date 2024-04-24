@@ -139,6 +139,7 @@ public class mainEmpleados {
 				System.err.println("Error, elija otra opcion");
 			}
 		} while (!tieneMasEmpleados.equals("n"));
+		
 		return director;
 	}
 	
@@ -192,8 +193,9 @@ public class mainEmpleados {
 	 * 
 	 * Este metodo esta asociado al metodo devolverSalarioTot() de la clase
 	 * empleado, por lo que si el array tiene algun valor distinto del objeto
-	 * creado mediante la clase Empleado con su metodo devolverSalarioTot(),
-	 * (metodo que devuelve un valor "double"), 
+	 * creado mediante la clase Empleado o sus herederos, con su metodo 
+	 * devolverSalarioTot(), (metodo que devuelve un valor "double"), podria
+	 * no funcionar correctamente.
 	 * 
 	 * @param <b>listaEmpleados</b> es un objeto creado mediante la clase
 	 * ArrayList.
