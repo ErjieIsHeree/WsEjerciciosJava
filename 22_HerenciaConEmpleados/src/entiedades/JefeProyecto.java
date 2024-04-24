@@ -8,9 +8,13 @@ public class JefeProyecto extends Empleado {
 		super();
 		establecerId();
 	}
+	
+	@Override
 	public String toString() {
-		return "JefeProyecto [incentivo=" + incentivo + "]";
+		return "JefeProyecto [incentivo=" + incentivo + ", id=" + getId() + ", dni=" + getDni()
+				+ ", nombre=" + getNombre() + ", sueldo base=" + getSueldoBase() + "]";
 	}
+
 	public double getIncentivo() {
 		return incentivo;
 	}

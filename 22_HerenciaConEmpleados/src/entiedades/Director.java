@@ -10,6 +10,12 @@ public class Director extends Empleado {
 		super();
 		establecerId();
 	}
+	
+	@Override
+	public String toString() {
+		return "Director [listaEmpleados=" + listaEmpleados + ", id=" + getId() + ", dni=" + getDni()
+				+ ", nombre=" + getNombre() + ", sueldo base=" + getSueldoBase() + "]";
+	}
 
 	public ArrayList<Empleado> getListaEmpleados() {
 		return listaEmpleados;

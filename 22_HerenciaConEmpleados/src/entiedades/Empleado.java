@@ -19,36 +19,53 @@ public class Empleado {
 	public String toString() {
 		return "Empleado [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", sueldoBase=" + sueldoBase + "]";
 	}
+	
 	public static int getContador() {
 		return contador;
 	}
+
+	public static void setContador(int contador) {
+		Empleado.contador = contador;
+	}
+
 	public int getId() {
 		return id;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getDni() {
 		return dni;
 	}
+
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public double getSueldoBase() {
 		return sueldoBase;
 	}
+
 	public void setSueldoBase(double sueldoBase) {
 		this.sueldoBase = sueldoBase;
 	}
+
 	/**
 	 * El metodo giveId() le da un id () al objeto si no tiene uno ya. Tambien
 	 * aumentara el valor del atributo contador en 1
 	 */
 	public void establecerId() {
-		if (this.id != 0) {
+		if (this.id == 0) {
 			this.id = Empleado.contador++;
 			System.out.println("El nuevo id del empleado es " + this.id);
 		} else {
