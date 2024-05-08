@@ -38,14 +38,15 @@ public class ObjetosPersona {
 				System.out.println("Introduce el nombre de la persona a la que"
 						+ " quieres buscar");
 				String nombre = sc.nextLine().toUpperCase();
-				System.out.println(hashMapPersonas.get(nombre.toUpperCase().toString()));
+				System.out.println(hashMapPersonas.get(nombre.toUpperCase()
+						.toString()));
 			} else if (eleccion.equals("4")) {
 				encendido = false;
 			}
 		} while (encendido == true);
 		
 	}
-	
+
 	public static void mostrarMenu() {
 		System.out.println("1.Introducir persona");
 		System.out.println("2.Mostrar personas");
