@@ -3,7 +3,7 @@ package game;
 public abstract class Arma {
 	
 	private String nombre;
-	private int ataque;
+	public final int ATAQUE = 10;
 
 	public String getNombre() {
 		return nombre;
@@ -13,12 +13,9 @@ public abstract class Arma {
 		this.nombre = nombre;
 	}
 
-	public int getAtaque() {
-		return ataque;
-	}
-
-	public void setAtaque(int ataque) {
-		this.ataque = ataque;
+	@Override
+	public String toString() {
+		return "Arma [nombre=" + nombre + ", ATAQUE=" + ATAQUE + "]";
 	}
 
 }

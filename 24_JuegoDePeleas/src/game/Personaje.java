@@ -4,6 +4,7 @@ public abstract class Personaje {
 	
 	private String nombre;
 	private Arma arma;
+	public int ataque;
 	private int vida;
 	
 	public String getNombre() {
@@ -30,12 +31,19 @@ public abstract class Personaje {
 		this.vida = vida;
 	}
 	
+	public int getAtaque() {
+		return ataque;
+	}
+
+	public void setAtaque(int ataque) {
+		this.ataque = ataque;
+	}
+
 	@Override
 	public String toString() {
-		return "Personaje [nombre=" + nombre + ", arma=" + arma + ","
-				+ " vida=" + vida + "]";
+		return "Personaje [nombre=" + nombre + ", arma=" + arma + ", ataque=" + ataque + ", vida=" + vida + "]";
 	}
-	
+
 	public abstract void Ataca(Personaje p1);
 
 }
